@@ -1,0 +1,11 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Java
+target/
+*.class
+
+# 환경 파일
+application.yml
+application.properties
