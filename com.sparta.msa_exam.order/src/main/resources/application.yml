@@ -1,0 +1,37 @@
+server:
+  port: 19092 # Order 서비스의 포트 번호
+
+spring:
+  application:
+    name: order-service # 애플리케이션 이름
+  datasource:
+    url: jdbc:mysql://localhost:3306/order_db # MySQL URL
+    username: root # MySQL 사용자명
+    password: 1q2w3e4r!! # MySQL 비밀번호
+    driver-class-name: com.mysql.cj.jdbc.Driver # MySQL 드라이버
+  jpa:
+    hibernate:
+      ddl-auto: update # JPA를 통해 스키마 자동 업데이트
+    show-sql: true # SQL 쿼리 로깅
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      username: default
+      password: systempass
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:19090/eureka/ # Eureka 서버의 URL
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans # Zipkin 트레이싱 엔드포인트
+  tracing:
+    sampling:
+      probability: 1.0 # 100% 샘플링 비율 (모든 요청 추적)
+logging:
+  level:
+    org.springframework.cloud.openfeign: DEBUG
